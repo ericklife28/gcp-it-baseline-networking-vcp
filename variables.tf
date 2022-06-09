@@ -1,7 +1,7 @@
-variable "build_project_id" {
+variable "variable1" {
   type = string
 }
 
-variable "environments_project_id" {
+variable "variable2" {
   type = string
 }
