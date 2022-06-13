@@ -21,15 +21,6 @@ resource google_compute_subnetwork vpc_network {
   }
 }
 
-resource google_compute_subnetwork proxy_subnet {
-  count         = var.enable_proxy_subnet ? 1 : 0
-  name          = "${var.name_prefix}-proxy-subnet"
-  description   = "A project-private proxy subnet used by the internal http(s) load balancer"
-  ip_cidr_range = "10.100.100.0/24"
-  region        = var.gcp_region
-  network       = google_compute_network.vpc_network.self_link
-}
-
 resource google_compute_router vpc_router {
   name    = "${var.name_prefix}-router"
   network = google_compute_network.vpc_network.self_link
@@ -48,12 +39,3 @@ resource google_compute_router_nat vpc_nat {
     filter = "ERRORS_ONLY"
   }
 }
-
-resource google_compute_network_peering vpc_peer {
-  count                = var.peering ? 1 : 0
-  name                 = "${var.name_prefix}-peering"
-  network              = google_compute_network.vpc_network.self_link
-  peer_network         = "projects/${var.peering_project_id}/global/networks/${var.peering_network_name}"
-  import_custom_routes = true
-}
-

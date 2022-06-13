@@ -33,26 +33,3 @@ variable tertiary_ip_range {
   default     = "10.170.2.0/25"
 }
 
-variable peering {
-  description = "Enable to peer with on-prem vpc (make sure you get network assignment and set ip_range correctly"
-  type        = bool
-  default     = false
-}
-
-variable peering_project_id {
-  description = "Project to peer with if peering is enabled"
-  type        = string
-  default     = "mcc-digital-equinix-peering"
-}
-
-variable peering_network_name {
-  description = "Network name to peer with if peering is enabled (name NOT link or id)"
-  type        = string
-  default     = "default"
-}
-
-variable enable_proxy_subnet {
-  description = "If enabled, creates a proxy subnet on 10.100.100.0/24 that is used only for proxy target load-balancing"
-  type        = bool
-  default     = false
-}

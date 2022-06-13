@@ -34,7 +34,7 @@ steps:
         terraform init -backend-config=config.google.tfbackend
     env:
     - 'ORG=bodendava'
-    - 'ENVIRONMENT=bld'
+    - 'ENVIRONMENT=net'
         
   # [START tf-plan]
   - id: 'tf plan'

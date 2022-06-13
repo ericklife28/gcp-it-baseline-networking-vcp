@@ -1,19 +1,17 @@
 // Peering for mcc-digital project
-resource google_compute_network_peering prod {
-  name                 = "peer-production"
-  network              = data.google_compute_network.default.self_link
-  peer_network         = "projects/mcc-digital/global/networks/terraform-network"
+resource google_compute_network_peering dev {
+  name                 = "peer-dev"
+  network              = var.dev
+  peer_network         = var.prod
   export_custom_routes = true
 }
 
 // Peering for mcc-digital-build project
-resource google_compute_network_peering build {
-  name                 = "peer-build"
-  network              = data.google_compute_network.default.self_link
-  peer_network         = "projects/mcc-digital-build/global/networks/packer"
+resource google_compute_network_peering prod {
+  name                 = "peer-prod"
+  network              = var.prod
+  peer_network         = var.dev
   export_custom_routes = true
 }
 
-data google_compute_network default {
-  name = "default"
-}
+
