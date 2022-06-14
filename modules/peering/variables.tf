@@ -1,13 +1,12 @@
-variable variable1 {
-    type = "string"
-}
+# variable variable1 {
+#    type = string
+#}
 
 variable dev {
-    type = "string"
-    default = google_compute_network.vpc_dev.self_link
+    type = string
 }
 
 variable prod {
-    type = "string"
-    default = google_compute_network.vpc_prod.self_link
+    type = string
+    
 }

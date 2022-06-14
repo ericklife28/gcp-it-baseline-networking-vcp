@@ -18,6 +18,10 @@ variable tertiary_ip_range {
   default = [ "10.170.2.128/25", "10.170.4.128/25"]  
 }
 
+variable "gcp_project_id" {
+  type    = string
+  default = "Secret"
+}
 
 
 

@@ -1,5 +1,5 @@
 module "vpc_dev" {
-    source = "./vpc"
+    source = "./modules/vpc"
 
     name_prefix = var.name_prefix[0]
     gcp_project_id = var.gcp_project_id
@@ -9,7 +9,7 @@ module "vpc_dev" {
 }
 
 module "vpc_prod" {
-    source = "./vpc"
+    source = "./modules/vpc"
 
     name_prefix = var.name_prefix[1]
     gcp_project_id = var.gcp_project_id
@@ -19,7 +19,10 @@ module "vpc_prod" {
 }
 
 module "peering" {
-    source = "./peering"
-  
+  source = "./modules/peering"
+
+  dev  = module.vpc_dev.network_link
+  prod = module.vpc_prod.network_link
+
 }
 
