@@ -1,11 +1,11 @@
 resource google_compute_network vpc_network {
-  name                    = "${var.name_prefix}-network"
+  name                    = "vpc-it-wsh-${var.name_prefix}-001"
   project                 = var.gcp_project_id
   auto_create_subnetworks = false
 }
 
 resource google_compute_subnetwork vpc_network {
-  name                     = google_compute_network.vpc_network.name
+  name                     = "sbnt-it-wsh-${var.name_prefix}-eus1-001"
   ip_cidr_range            = var.ip_range
   region                   = var.gcp_region
   network                  = google_compute_network.vpc_network.self_link
@@ -22,13 +22,13 @@ resource google_compute_subnetwork vpc_network {
 }
 
 resource google_compute_router vpc_router {
-  name    = "${var.name_prefix}-router"
+  name    = "vpcr-it-wsh-${var.name_prefix}-eus1-001"
   network = google_compute_network.vpc_network.self_link
   region  = var.gcp_region
 }
 
 resource google_compute_router_nat vpc_nat {
-  name                               = "${var.name_prefix}-router-nat"
+  name                               = "vpcn-it-wsh-${var.name_prefix}-eus1-001"
   router                             = google_compute_router.vpc_router.name
   region                             = google_compute_router.vpc_router.region
   nat_ip_allocate_option             = "AUTO_ONLY"
