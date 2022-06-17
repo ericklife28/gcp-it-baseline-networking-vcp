@@ -2,11 +2,30 @@
 #    type = string
 #}
 
-variable dev {
+variable net1 {
     type = string
 }
 
-variable prod {
+variable net2 {
+    type = string    
+}
+
+variable net3 {
+    type = string    
+}
+
+variable peer-name-1 {
     type = string
-    
+}
+
+variable peer-name-2 {
+    type = string
+}
+
+variable peer-name-3 {
+    type = string
+}
+
+variable peer-name-4 {
+    type = string
 }

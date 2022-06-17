@@ -10,10 +10,10 @@ variable gcp_project_id {
 }
 
 variable name_prefix {
-  description = "Network object name prefix (default is terraform)"
+  description = "Network object name prefix"
   type        = string
-  default     = "terraform"
 }
+
 
 variable ip_range {
   description = "Primary ip subnet cidr (should be in 10.170.0.0/16) -- contact devops for allocation"
