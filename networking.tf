@@ -1,6 +1,6 @@
 module "vpc_dev" {
   count              = var.deploy ? 1 : 0
-  source = "./modules/vpc"
+  source             = "./modules/vpc"
   name_prefix        = var.name_prefix[0]
   gcp_project_id     = var.gcp_project_id
   ip_range           = var.ip_range[0]
@@ -10,7 +10,7 @@ module "vpc_dev" {
 }
 
 module "vpc_prod" {
-  source = "./modules/vpc"
+  source             = "./modules/vpc"
   count              = var.deploy ? 1 : 0
   name_prefix        = var.name_prefix[1]
   gcp_project_id     = var.gcp_project_id
@@ -21,8 +21,8 @@ module "vpc_prod" {
 }
 
 module "vpc_transit" {
-  source = "./modules/transit-vpc"
   count          = var.deploy ? 1 : 0
+  source         = "./modules/transit-vpc"
   name_prefix    = var.name_prefix[2]
   gcp_project_id = var.gcp_project_id
   ip_range       = var.ip_range[2]
