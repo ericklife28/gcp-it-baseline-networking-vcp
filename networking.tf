@@ -32,8 +32,8 @@ module "vpc_transit" {
 module "peering_dev_transit" {
   count       = var.deploy ? 1 : 0
   source      = "./modules/peering"
-  net1        = module.vpc_dev.network_link
-  net2        = module.vpc_transit.network_link
+  net1        = module.vpc_dev[0].network_link
+  net2        = module.vpc_transit[0].network_link
   peer-name-1 = var.peer-name-1
   peer-name-2 = var.peer-name-2
 }
@@ -42,8 +42,8 @@ module "peering_dev_transit" {
 module "peering_prod_transit" {
   count       = var.deploy ? 1 : 0
   source      = "./modules/peering"
-  net1        = module.vpc_prod.network_link
-  net2        = module.vpc_transit.network_link
+  net1        = module.vpc_prod[0].network_link
+  net2        = module.vpc_transit[0].network_link
   peer-name-1 = var.peer-name-3
   peer-name-2 = var.peer-name-4
 }
