@@ -1,45 +1,35 @@
-output network_prod {
+output "networks" {
   description = "Network object created by vpc module"
-  value = module.vpc_prod.network
-}
-
-
-output subnetwork_prod {
-  description = "Subnetwork object created by vpc module"
-  value = module.vpc_prod.subnetwork
+  value       = {
+    "prod" = tolist(module.vpc_prod.*.network),
+    "dev"  = tolist(module.vpc_dev.*.network)
   }
-
-
-output secondary_range_name_prod {
-  description = "Name of the secondary ip range created by vpc module"
-  value = module.vpc_prod.secondary_range_name
 }
 
 
-output tertiary_range_name_prod {
-  description = "Name of the tertiery ip range created by vpc module"
-  value = module.vpc_prod.tertiary_range_name
-}
-
-output network_dev {
-  description = "Network object created by vpc module"
-  value = module.vpc_dev.network
-}
-
-
-output subnetwork_dev {
+output "subnetworks" {
   description = "Subnetwork object created by vpc module"
-  value = module.vpc_dev.subnetwork
+  value       = {
+    "prod" = tolist(module.vpc_prod.*.subnetwork),
+    "dev"  = tolist(module.vpc_dev.*.subnetwork)
   }
+}
 
 
-output secondary_range_name_dev {
+output "secondary_range_names" {
   description = "Name of the secondary ip range created by vpc module"
-  value = module.vpc_dev.secondary_range_name
+  value       = {
+    "prod" = tolist(module.vpc_prod.*.secondary_range_name),
+    "dev"  = tolist(module.vpc_dev.*.secondary_range_name)
+  }
 }
 
 
-output tertiary_range_name_dev {
+output "tertiary_range_names" {
   description = "Name of the tertiery ip range created by vpc module"
-  value = module.vpc_dev.tertiary_range_name
+  value       = {
+    "prod" = tolist(module.vpc_prod.*.tertiary_range_name),
+    "dev"  = tolist(module.vpc_dev.*.tertiary_range_name)
+  }
 }
+
