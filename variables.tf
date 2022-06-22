@@ -25,7 +25,7 @@ variable "gcp_project_id" {
 variable "gcp_region" {
   description = "The region for this network (default us-east1)"
   type        = string
-  default     = "US-EAST1"
+  default     = "us-east-1"
 }
 
 variable "peer-name" {
